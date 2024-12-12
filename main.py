@@ -42,4 +42,4 @@ with sr.Microphone() as source:
     if " what" and "about" and "you" in text:
        speak("i am also having a good day sir")
     speak("what can i do for you")
-
+ 
