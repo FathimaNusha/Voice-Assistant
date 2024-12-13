@@ -67,3 +67,4 @@ with sr.Microphone() as source:
         assist=infow()
         assist.get_info(text3)
  
+
