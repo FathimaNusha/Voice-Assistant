@@ -17,8 +17,6 @@ class infow():
         enter.click()
         input("wait unitil user close the webpage")
 
-assist=infow()
-assist.get_info("")
 
 
 
