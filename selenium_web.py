@@ -18,4 +18,10 @@ class infow():
         input("wait unitil user close the webpage")
 
 assist=infow()
-assist.get_info("hello")
+assist.get_info("")
+
+
+
+
+
+#have to add functionality to read first paragraph of wikipedia page
