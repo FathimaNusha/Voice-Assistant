@@ -7,6 +7,9 @@ from selenium_web import *
 from youtube import *
 from news import *
 import randfacts
+from jokes import *
+from weather import *
+import datetime
 
 
 # Instance of pyttsx3
@@ -26,10 +29,26 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+today_date = datetime.datetime.now()
+current_hour = today_date.hour
+
+if current_hour <12:
+    greet ="good morning"
+elif 18 >current_hour>=12 :
+    greet =" good afternoon"
+else:
+    greet ="good night"
+
+
 # Recognizer instance
 r = sr.Recognizer()
 
-speak("Hello sir, I am your voice assistant. How are you?")
+
+speak("Hello sir")
+speak(str(greet) )
+speak("I am your voice assistant")    
+speak("Today is " + today_date.strftime("%A, %B %d, %Y, and the time is %I:%M %p"))
+speak("How are you?")
 
 with sr.Microphone() as source:
     # Low threshold for unclear voice
@@ -42,9 +61,8 @@ with sr.Microphone() as source:
     text = r.recognize_google(audio)
     print(text)
 
-    if "what" in text and "about" in text and "you" in text:
-        speak("I am also having a good day, sir.")
-    speak("What can I do for you?")
+    if "fine" in text or "good" in text:
+         speak("What can I do for you?")
 
     with sr.Microphone() as source:
         r.energy_threshold = 2000
@@ -70,7 +88,7 @@ with sr.Microphone() as source:
             assist = infow()
             assist.get_info(text3)
 
-        elif "play" and "video" in text2:
+        elif "play" in text2 and "video" in text2:
             speak("sure sir , Which video do you want to play?")
             with sr.Microphone() as source:
                 r.energy_threshold = 2000
@@ -92,12 +110,24 @@ with sr.Microphone() as source:
               print(news_item)
               speak (news_item)
 
-        elif "fact" or "facts" or "interesting" in text2:
+        elif "joke" in text2:
+            speak("sure sir ")
+            arr=joke()   
+            print(arr[0])
+            speak (arr[0])   
+            print(arr[1])
+            speak (arr[1]) 
+
+        elif "fact" in text2 or "facts" in text2 or "interesting" in text2:
               speak("sure sir")
-              fact = randfacts.getFact()
+              fact = randfacts.get_fact()
               print(fact)
               speak ("Did you know that" + fact)
-        
+
+        elif "weather" in text2 or "temperature" in text2:
+            speak("sure sir")
+            speak("current temperature of colombo is "+ str(temp()) +"and sky is look l" + str(des()))  
+
 
         else:
             speak("Sorry, I couldn't understand your command. Please try again.")
