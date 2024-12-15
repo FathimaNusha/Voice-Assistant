@@ -1,1 +1,1 @@
-//api keys of news and wheather
+#api keys of news and wheather
