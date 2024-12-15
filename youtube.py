@@ -15,7 +15,3 @@ class music():
         input("wait unitil user close the webpage")
 
 
-
-
-
-#have to add functionality to read first paragraph of wikipedia page
