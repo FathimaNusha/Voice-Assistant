@@ -1,2 +1,1 @@
-
-key = "57251fa7733a453abdd5d506f0468201"
+//api keys of news and wheather
